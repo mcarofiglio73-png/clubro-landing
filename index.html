@@ -1639,5 +1639,33 @@
     }
   </script>
 
+<!-- COOKIE BANNER -->
+  <div id="cookie-banner" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:999;background:#161b22;border-top:1px solid rgba(255,255,255,0.08);padding:1.2rem 2rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem">
+    <p style="font-size:0.82rem;color:#8b949e;margin:0;max-width:700px">
+      🍪 Utilizziamo cookie tecnici necessari al funzionamento del sito. Per maggiori informazioni consulta la nostra <a href="/privacy.html#cookie" style="color:#00c896">Cookie Policy</a>.
+    </p>
+    <div style="display:flex;gap:0.8rem;flex-shrink:0">
+      <button onclick="accettaCookie()" style="background:#00c896;color:#0d1117;border:none;padding:0.55rem 1.2rem;border-radius:6px;font-size:0.85rem;font-weight:600;cursor:pointer">Accetta</button>
+      <button onclick="rifiutaCookie()" style="background:transparent;color:#8b949e;border:1px solid rgba(255,255,255,0.08);padding:0.55rem 1.2rem;border-radius:6px;font-size:0.85rem;cursor:pointer">Solo necessari</button>
+    </div>
+  </div>
+
+  <script>
+    function mostraCookieBanner() {
+      if (!localStorage.getItem("cookie_consent")) {
+        document.getElementById("cookie-banner").style.display = "flex"
+      }
+    }
+    function accettaCookie() {
+      localStorage.setItem("cookie_consent", "accepted")
+      document.getElementById("cookie-banner").style.display = "none"
+    }
+    function rifiutaCookie() {
+      localStorage.setItem("cookie_consent", "necessary")
+      document.getElementById("cookie-banner").style.display = "none"
+    }
+    window.addEventListener("load", mostraCookieBanner)
+  </script>
+
 </body>
 </html>
